@@ -9,9 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@xstate/graph": "^1.4.2",
+    "@xstate/inspect": "^0.7.0",
+    "@xstate/react": "^3.0.1",
+    "gsap": "^3.11.0",
     "next": "12.2.5",
+    "normalize.css": "^8.0.1",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "styled-components": "^5.3.5",
+    "xstate": "^4.33.4"
   },
   "devDependencies": {
     "eslint": "8.23.0",
