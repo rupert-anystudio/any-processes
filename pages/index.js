@@ -8,7 +8,7 @@ const steps = [
     steps: [
       {
         id: '1',
-        title: 'Firt Contact',
+        title: 'First Contact',
       },
       {
         id: '2',

@@ -8,11 +8,16 @@ const StepWrap = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: stretch;
+  align-items: flex-start;
 `
 
 const StepTitle = styled.span`
   font-family: sans-serif;
+  font-size: 2rem;
+  /* background: black;
+  color: white;
+  padding: .5rem 1rem;
+  border-radius: 1rem; */
 `
 
 const Steps = styled.div`
