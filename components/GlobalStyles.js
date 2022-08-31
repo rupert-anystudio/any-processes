@@ -2,8 +2,10 @@ import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   :root {
-    --color-bg: black;
-    --color-txt: white;
+    --color-bg: white;
+    --color-txt: black;
+    --color-step: #cccccc;
+    --arrow-size: .7rem;
   }
 
   *, *:before, *:after {
