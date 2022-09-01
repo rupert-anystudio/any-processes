@@ -1,1 +1,1 @@
-export { GeneralProcessContainer as default } from './GeneralProcessContainer'
+export { GeneralProcess as default } from './GeneralProcess'

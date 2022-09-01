@@ -95,6 +95,10 @@ createMachine({
         Research: {
           meta: {
             index: 0,
+            notes: [
+              'Competitor Analysis',
+              'Appropriate Workshops',
+            ],
           },
           on: {
             next: {
@@ -105,6 +109,15 @@ createMachine({
         Workshop: {
           meta: {
             index: 1,
+            notes: [
+              'Persona',
+              'Golden Circle',
+              'Benchmarking',
+              'Stakeholder Map',
+              'Elevator Pitch',
+              'Value Check',
+              'IKIGAI',
+            ],
           },
           on: {
             next: {
@@ -125,6 +138,16 @@ createMachine({
         Strategy: {
           meta: {
             index: 3,
+            notes: [
+              'Target audience',
+              'Purpose & Vision',
+              'Core Values',
+              'Touch Points',
+              'USP',
+              'Content Strategy',
+              'Mission Statement',
+              'Brand Architecture',
+            ],
           },
           type: "final",
           on: {
@@ -144,6 +167,14 @@ createMachine({
         "Collection & Creation": {
           meta: {
             index: 0,
+            notes: [
+              'Imagery',
+              'Videos',
+              'Textual Content',
+              'Tabular Data',
+              'Amount of data',
+              'Languages',
+            ],
           },
           on: {
             next: {
@@ -154,6 +185,11 @@ createMachine({
         "Information Architecture": {
           meta: {
             index: 1,
+            notes: [
+              'Hirarchy of content',
+              'Localisation',
+              'Aggregated data',
+            ],
           },
           type: "final",
           on: {
@@ -183,6 +219,10 @@ createMachine({
         Workshop: {
           meta: {
             index: 1,
+            notes: [
+              'Good & bad examples',
+              'Competitor analysis',
+            ],
           },
           on: {
             next: {
@@ -203,6 +243,14 @@ createMachine({
         Branding: {
           meta: {
             index: 3,
+            notes: [
+              'Color Sheme',
+              'Typography',
+              'Imagery',
+              'Tone of voice',
+              'Motion',
+              'Logo & Iconography',
+            ],
           },
           type: "final",
           on: {
@@ -228,6 +276,11 @@ createMachine({
             "Data Modeling": {
               meta: {
                 index: 0,
+                notes: [
+                  'Reusability',
+                  'Data first approach',
+                  'Future proofing',
+                ],
               },
               on: {
                 next: {
@@ -238,6 +291,11 @@ createMachine({
             "Screen Design": {
               meta: {
                 index: 1,
+                notes: [
+                  'Mobile first',
+                  'Micro Interactions',
+                  'Animations',
+                ],
               },
               on: {
                 next: {
@@ -248,6 +306,11 @@ createMachine({
             "Backend Development": {
               meta: {
                 index: 2,
+                notes: [
+                  'Based on data modeling',
+                  'Headless CMS',
+                  'Preview deployment',
+                ],
               },
               on: {
                 next: {
@@ -258,6 +321,12 @@ createMachine({
             "Frontend Development": {
               meta: {
                 index: 3,
+                notes: [
+                  'Components',
+                  'Pages',
+                  'Composition',
+                  'Preview deployment',
+                ],
               },
               on: {
                 next: {
@@ -268,6 +337,10 @@ createMachine({
             Production: {
               meta: {
                 index: 4,
+                notes: [
+                  'Deployment',
+                  'Login Handover',
+                ],
               },
               type: "final",
               on: {

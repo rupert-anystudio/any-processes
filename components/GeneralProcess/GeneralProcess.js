@@ -1,15 +1,11 @@
-import { useActor } from '@xstate/react'
-import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { getNodesFromMachine } from '../../lib/getNodesFromMachine'
-import { BigButton } from '../BigButton'
 import BranchRenderer from '../BranchRenderer'
-import { FixedToScreen } from '../FixedToScreen'
-import { GeneralProcessContext } from './GeneralProcessContainer'
+import { useGeneralProcess } from './GeneralProcessContext'
 
 const Wrap = styled.div`
   width: 100%;
-  margin: 40vw 0;
+  margin: 0 0 40vw 0;
 `
 
 const Stage = styled.div`
@@ -71,26 +67,38 @@ const Step = styled.div`
   }
 `
 
-const nextEvent = { type: 'next' }
+const NotesWrap = styled.ul`
+  font-size: 2vw;
+  padding: 0 0 0 4vw;
+  margin: 0;
+  > li {
+
+  }
+`
+
+// const Notes = ({ entries = [] }) => {
+//   if (!entries || entries.length < 1) return null
+//   return (
+//     <NotesWrap>
+//       {entries.map(entry => (
+//         <li key={entry}>{entry}</li>
+//       ))}
+//     </NotesWrap>
+//   )
+// }
 
 export const GeneralProcess = () => {
-  const processService = useContext(GeneralProcessContext)
-  const [state] = useActor(processService)
- 
+  const { state } = useGeneralProcess()
   const nodes = getNodesFromMachine(state?.machine)
 
-  const handleNextClick = () => {
-    processService.send(nextEvent)
-  }
+  // const stage = typeof state.value === 'string'
+  //   ? state.value
+  //   : Object.keys(state.value)[0]
 
-  const stage = typeof state.value === 'string'
-    ? state.value
-    : Object.keys(state.value)[0]
-
-  useEffect(() => {
-    const element = document.getElementById(stage)
-    element.scrollIntoView({behavior: 'smooth', block: 'center' })
-  }, [stage])
+  // useEffect(() => {
+  //   const element = document.getElementById(stage)
+  //   element.scrollIntoView({behavior: 'smooth', block: 'center' })
+  // }, [stage])
 
   const renderNodeOne = ({
     node = {},
@@ -101,13 +109,12 @@ export const GeneralProcess = () => {
       id,
       title,
       nodes = [],
-      notes = [],
+      // notes = [],
     } = node
     const isMatching = state.matches(id)
     if (level < 1) return (
       <Stage isMatching={isMatching} id={id}>
         <strong>{title}</strong>
-
         <div>{renderChildren()}</div>
       </Stage>
     )
@@ -126,21 +133,11 @@ export const GeneralProcess = () => {
   }
 
   return (
-    <>
-      <Wrap>
-        <BranchRenderer
-          nodes={nodes}
-          renderNode={renderNodeOne}
-        />
-      </Wrap>
-      <FixedToScreen style={{ paddingBottom: '2rem' }}>
-        {state.can(nextEvent) && (
-          <BigButton
-            onClick={handleNextClick}
-            label={'Next'}
-          />
-        )}
-      </FixedToScreen>
-    </>
+    <Wrap>
+      <BranchRenderer
+        nodes={nodes}
+        renderNode={renderNodeOne}
+      />
+    </Wrap>
   )
 }
