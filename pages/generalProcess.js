@@ -1,7 +1,8 @@
 import { BigButton } from '../components/BigButton'
 import { FixedToBottom } from '../components/FixedToScreen'
-import GeneralProcess from '../components/GeneralProcess'
 import { GeneralProcessContextProvider, useGeneralProcess } from '../components/GeneralProcess/GeneralProcessContext'
+import { GeneralProcessOne } from '../components/GeneralProcess/GeneralProcessOne'
+import { GeneralProcessTwo } from '../components/GeneralProcess/GeneralProcessTwo'
 
 const NextButton = () => {
   const { state, service } = useGeneralProcess()
@@ -25,7 +26,8 @@ export default function PageGeneralProcess() {
   return (
     <>
       <GeneralProcessContextProvider>
-        <GeneralProcess />
+        <GeneralProcessOne />
+        <GeneralProcessTwo />
         <NextButton />
       </GeneralProcessContextProvider>
     </>

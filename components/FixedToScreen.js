@@ -10,4 +10,5 @@ export const FixedToBottom = styled.div`
   justify-content: center;
   justify-content:center;
   align-items: center;
+  padding-bottom: 3vw;
 `

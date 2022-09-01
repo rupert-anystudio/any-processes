@@ -1,1 +1,0 @@
-export { GeneralProcess as default } from './GeneralProcess'

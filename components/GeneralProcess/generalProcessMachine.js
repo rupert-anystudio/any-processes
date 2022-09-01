@@ -255,152 +255,236 @@ createMachine({
           type: "final",
           on: {
             next: {
-              target: "#generalProcess.Execution",
+              target: "#generalProcess.Website",
             },
           },
         },
       },
     },
-    Execution: {
+    Website: {
       meta: {
         index: 5,
       },
-      type: "parallel",
+      initial: "Data Modeling",
       states: {
-        Website: {
+        "Data Modeling": {
           meta: {
             index: 0,
+            notes: [
+              'Reusability',
+              'Data first approach',
+              'Future proofing',
+            ],
           },
-          initial: "Data Modeling",
-          states: {
-            "Data Modeling": {
-              meta: {
-                index: 0,
-                notes: [
-                  'Reusability',
-                  'Data first approach',
-                  'Future proofing',
-                ],
-              },
-              on: {
-                next: {
-                  target: "Screen Design",
-                },
-              },
-            },
-            "Screen Design": {
-              meta: {
-                index: 1,
-                notes: [
-                  'Mobile first',
-                  'Micro Interactions',
-                  'Animations',
-                ],
-              },
-              on: {
-                next: {
-                  target: "Backend Development",
-                },
-              },
-            },
-            "Backend Development": {
-              meta: {
-                index: 2,
-                notes: [
-                  'Based on data modeling',
-                  'Headless CMS',
-                  'Preview deployment',
-                ],
-              },
-              on: {
-                next: {
-                  target: "Frontend Development",
-                },
-              },
-            },
-            "Frontend Development": {
-              meta: {
-                index: 3,
-                notes: [
-                  'Components',
-                  'Pages',
-                  'Composition',
-                  'Preview deployment',
-                ],
-              },
-              on: {
-                next: {
-                  target: "Production",
-                },
-              },
-            },
-            Production: {
-              meta: {
-                index: 4,
-                notes: [
-                  'Deployment',
-                  'Login Handover',
-                ],
-              },
-              type: "final",
-              on: {
-                next: {
-                  target: "#generalProcess.Aftermath",
-                },
-              },
+          on: {
+            next: {
+              target: "Screen Design",
             },
           },
         },
-        Print: {
+        "Screen Design": {
           meta: {
             index: 1,
+            notes: [
+              'Mobile first',
+              'Micro Interactions',
+              'Animations',
+            ],
           },
-          initial: "Design",
-          states: {
-            Design: {
-              meta: {
-                index: 0,
-              },
-              on: {
-                next: {
-                  target: "Production",
-                },
-              },
-            },
-            Production: {
-              meta: {
-                index: 1,
-              },
-              type: "final",
+          on: {
+            next: {
+              target: "Backend Development",
             },
           },
         },
-        Motion: {
-          initial: "Design",
+        "Backend Development": {
           meta: {
             index: 2,
+            notes: [
+              'Based on data modeling',
+              'Headless CMS',
+              'Preview deployment',
+            ],
           },
-          states: {
-            Design: {
-              meta: {
-                index: 0,
-              },
-              on: {
-                next: {
-                  target: "Production",
-                },
-              },
+          on: {
+            next: {
+              target: "Frontend Development",
             },
-            Production: {
-              meta: {
-                index: 1,
-              },
-              type: "final",
+          },
+        },
+        "Frontend Development": {
+          meta: {
+            index: 3,
+            notes: [
+              'Components',
+              'Pages',
+              'Composition',
+              'Preview deployment',
+            ],
+          },
+          on: {
+            next: {
+              target: "Production",
+            },
+          },
+        },
+        Production: {
+          meta: {
+            index: 4,
+            notes: [
+              'Deployment',
+              'Login Handover',
+            ],
+          },
+          type: "final",
+          on: {
+            next: {
+              target: "#generalProcess.Aftermath",
             },
           },
         },
       },
     },
+    // Execution: {
+    //   meta: {
+    //     index: 5,
+    //   },
+    //   type: "parallel",
+    //   states: {
+    //     Website: {
+    //       meta: {
+    //         index: 0,
+    //       },
+    //       initial: "Data Modeling",
+    //       states: {
+    //         "Data Modeling": {
+    //           meta: {
+    //             index: 0,
+    //             notes: [
+    //               'Reusability',
+    //               'Data first approach',
+    //               'Future proofing',
+    //             ],
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Screen Design",
+    //             },
+    //           },
+    //         },
+    //         "Screen Design": {
+    //           meta: {
+    //             index: 1,
+    //             notes: [
+    //               'Mobile first',
+    //               'Micro Interactions',
+    //               'Animations',
+    //             ],
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Backend Development",
+    //             },
+    //           },
+    //         },
+    //         "Backend Development": {
+    //           meta: {
+    //             index: 2,
+    //             notes: [
+    //               'Based on data modeling',
+    //               'Headless CMS',
+    //               'Preview deployment',
+    //             ],
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Frontend Development",
+    //             },
+    //           },
+    //         },
+    //         "Frontend Development": {
+    //           meta: {
+    //             index: 3,
+    //             notes: [
+    //               'Components',
+    //               'Pages',
+    //               'Composition',
+    //               'Preview deployment',
+    //             ],
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Production",
+    //             },
+    //           },
+    //         },
+    //         Production: {
+    //           meta: {
+    //             index: 4,
+    //             notes: [
+    //               'Deployment',
+    //               'Login Handover',
+    //             ],
+    //           },
+    //           type: "final",
+    //           on: {
+    //             next: {
+    //               target: "#generalProcess.Aftermath",
+    //             },
+    //           },
+    //         },
+    //       },
+    //     },
+    //     Print: {
+    //       meta: {
+    //         index: 1,
+    //       },
+    //       initial: "Design",
+    //       states: {
+    //         Design: {
+    //           meta: {
+    //             index: 0,
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Production",
+    //             },
+    //           },
+    //         },
+    //         Production: {
+    //           meta: {
+    //             index: 1,
+    //           },
+    //           type: "final",
+    //         },
+    //       },
+    //     },
+    //     Motion: {
+    //       initial: "Design",
+    //       meta: {
+    //         index: 2,
+    //       },
+    //       states: {
+    //         Design: {
+    //           meta: {
+    //             index: 0,
+    //           },
+    //           on: {
+    //             next: {
+    //               target: "Production",
+    //             },
+    //           },
+    //         },
+    //         Production: {
+    //           meta: {
+    //             index: 1,
+    //           },
+    //           type: "final",
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
     Aftermath: {
       initial: "Final Billing",
       meta: {

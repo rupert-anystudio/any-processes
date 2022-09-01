@@ -1,11 +1,9 @@
 import styled from 'styled-components'
-import { getNodesFromMachine } from '../../lib/getNodesFromMachine'
 import BranchRenderer from '../BranchRenderer'
 import { useGeneralProcess } from './GeneralProcessContext'
 
 const Wrap = styled.div`
   width: 100%;
-  margin: 0 0 40vw 0;
 `
 
 const Stage = styled.div`
@@ -87,9 +85,8 @@ const NotesWrap = styled.ul`
 //   )
 // }
 
-export const GeneralProcess = () => {
-  const { state } = useGeneralProcess()
-  const nodes = getNodesFromMachine(state?.machine)
+export const GeneralProcessOne = () => {
+  const { state, nodes } = useGeneralProcess()
 
   // const stage = typeof state.value === 'string'
   //   ? state.value
