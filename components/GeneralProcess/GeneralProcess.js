@@ -83,7 +83,9 @@ export const GeneralProcess = () => {
     processService.send(nextEvent)
   }
 
-  const stage = typeof state.value === 'string' ? state.value : Object.keys(state.value)[0]
+  const stage = typeof state.value === 'string'
+    ? state.value
+    : Object.keys(state.value)[0]
 
   useEffect(() => {
     const element = document.getElementById(stage)
@@ -91,26 +93,33 @@ export const GeneralProcess = () => {
   }, [stage])
 
   const renderNodeOne = ({
-    node,
-    level,
+    node = {},
+    level = 0,
     renderChildren,
   }) => {
-    const isMatching = state.matches(node.id)
+    const {
+      id,
+      title,
+      nodes = [],
+      notes = [],
+    } = node
+    const isMatching = state.matches(id)
     if (level < 1) return (
-      <Stage isMatching={isMatching} id={node.id}>
-        <strong>{node.title}</strong>
+      <Stage isMatching={isMatching} id={id}>
+        <strong>{title}</strong>
+
         <div>{renderChildren()}</div>
       </Stage>
     )
-    if (level < 2 && node?.nodes?.length) return (
+    if (level < 2 && nodes && nodes.length) return (
       <Flow isMatching={isMatching}>
-        <strong>{node.title}</strong>
+        <strong>{title}</strong>
         <div>{renderChildren()}</div>
       </Flow>
     )
     return (
       <Step isMatching={isMatching}>
-        <strong>{node.title}</strong>
+        <strong>{title}</strong>
         {renderChildren()}
       </Step>
     )
