@@ -160,7 +160,7 @@ createMachine({
     },
     Content: {
       meta: {
-        index: 2,
+        index: 3,
       },
       initial: "Collection & Creation",
       states: {

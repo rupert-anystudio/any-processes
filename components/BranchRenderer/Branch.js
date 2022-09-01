@@ -14,18 +14,4 @@ export const Branch = ({ node, level = 0, renderNode, renderAsChildren }) => {
   }
 
   return renderNode({ node, level, renderChildren })
-
-  // const children = renderChildren()
-
-  // if (renderAsChildren) return (
-  //   <>
-  //     {renderNode({ node, level, children })}
-  //   </>
-  // )
-  // return (
-  //   <>
-  //     {renderNode({ node, level })}
-  //     {children}
-  //   </>
-  // )
 }
