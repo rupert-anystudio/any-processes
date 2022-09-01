@@ -1,0 +1,1 @@
+export { GeneralProcessContainer as default } from './GeneralProcessContainer'

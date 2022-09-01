@@ -13,6 +13,7 @@
     "@xstate/inspect": "^0.7.0",
     "@xstate/react": "^3.0.1",
     "gsap": "^3.11.0",
+    "lodash": "^4.17.21",
     "next": "12.2.5",
     "normalize.css": "^8.0.1",
     "react": "18.2.0",

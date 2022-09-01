@@ -1,15 +1,24 @@
-import { Step } from './Step'
-import { StepList } from './StepList'
+import styled from 'styled-components'
+import { Branch } from './Branch'
+
+const Wrap = styled.div`
+  width: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: .5rem;
+`
 
 export const NestedSteps = ({ steps = [] }) => {
   return (
-    <StepList>
+    <Wrap>
       {steps.map(step => (
-        <Step
+        <Branch
           key={step.id}
           step={step}
         />
       ))}
-    </StepList>
+    </Wrap>
   )
 }
