@@ -22,266 +22,306 @@ createMachine({
   // invoke: {
   //   id: 'automaticNext',
   //   src: (c, e) => (callback, onReceive) => {
-  //     // This will send the 'INC' event to the parent every second
-  //     const id = setInterval(() => callback('next'), 200)
-  //     // Perform cleanup
+  //     const id = setInterval(() => callback('next'), 1000)
   //     return () => clearInterval(id)
   //   }
   // },
   states: {
-    // Idle: {
-    //   index: 0,
-    //   on: {
-    //     next: {
-    //       target: "Discovery",
-    //       // actions: ['onNext']
-    //     },
-    //   },
-    // },
     Discovery: {
-      index: 1,
       initial: "First Contact",
+      meta: {
+        index: 1,
+        notes: [
+          'First phase where we get things started',
+        ],
+      },
       states: {
         "First Contact": {
-          index: 0,
+          meta: {
+            index: 0,
+            notes: [
+              'Get to know meeting',
+            ],
+          },
           on: {
             next: {
               target: "Defining Scope",
-              // actions: ['onNext']
             },
           },
         },
         "Defining Scope": {
-          index: 1,
+          meta: {
+            index: 1,
+            notes: [
+              'Timeframe',
+              'List of Products',
+            ],
+          },
           on: {
             next: {
               target: "Contract",
-              // actions: ['onNext']
             },
           },
         },
         Contract: {
-          index: 2,
+          meta: {
+            index: 2,
+          },
           on: {
             next: {
               target: "50% Invoice",
-              // actions: ['onNext']
             },
           },
         },
         "50% Invoice": {
-          index: 3,
+          meta: {
+            index: 3,
+          },
           type: "final",
           on: {
             next: {
               target: "#generalProcess.Strategy",
-              // actions: ['onNext']
             },
           },
         },
       },
     },
     Strategy: {
-      index: 2,
+      meta: {
+        index: 2,
+      },
       initial: "Research",
       states: {
         Research: {
-          index: 0,
+          meta: {
+            index: 0,
+          },
           on: {
             next: {
               target: "Workshop",
-              // actions: ['onNext']
             },
           },
         },
         Workshop: {
-          index: 1,
+          meta: {
+            index: 1,
+          },
           on: {
             next: {
               target: "Strategy Proposal",
-              // actions: ['onNext']
             },
           },
         },
         "Strategy Proposal": {
-          index: 2,
+          meta: {
+            index: 2,
+          },
           on: {
             next: {
               target: "Strategy",
-              // actions: ['onNext']
             },
           },
         },
         Strategy: {
-          index: 3,
+          meta: {
+            index: 3,
+          },
           type: "final",
           on: {
             next: {
               target: "#generalProcess.Content",
-              // actions: ['onNext']
             },
           },
         },
       },
     },
     Content: {
-      index: 3,
+      meta: {
+        index: 2,
+      },
       initial: "Collection & Creation",
       states: {
         "Collection & Creation": {
-          index: 0,
+          meta: {
+            index: 0,
+          },
           on: {
             next: {
               target: "Information Architecture",
-              // actions: ['onNext']
             },
           },
         },
         "Information Architecture": {
-          index: 1,
+          meta: {
+            index: 1,
+          },
           type: "final",
           on: {
             next: {
               target: "#generalProcess.Branding",
-              // actions: ['onNext']
             },
           },
         },
       },
     },
     Branding: {
-      index: 4,
+      meta: {
+        index: 4,
+      },
       initial: "Research",
       states: {
         Research: {
-          index: 0,
+          meta: {
+            index: 0,
+          },
           on: {
             next: {
               target: "Workshop",
-              // actions: ['onNext']
             },
           },
         },
         Workshop: {
-          index: 1,
+          meta: {
+            index: 1,
+          },
           on: {
             next: {
               target: "Design Direction",
-              // actions: ['onNext']
             },
           },
         },
         "Design Direction": {
-          index: 2,
+          meta: {
+            index: 2,
+          },
           on: {
             next: {
               target: "Branding",
-              // actions: ['onNext']
             },
           },
         },
         Branding: {
-          index: 3,
+          meta: {
+            index: 3,
+          },
           type: "final",
           on: {
             next: {
               target: "#generalProcess.Execution",
-              // actions: ['onNext']
             },
           },
         },
       },
     },
     Execution: {
-      index: 5,
+      meta: {
+        index: 5,
+      },
       type: "parallel",
       states: {
         Website: {
-          index: 0,
+          meta: {
+            index: 0,
+          },
           initial: "Data Modeling",
           states: {
             "Data Modeling": {
-              index: 0,
+              meta: {
+                index: 0,
+              },
               on: {
                 next: {
                   target: "Screen Design",
-                  // actions: ['onNext']
                 },
               },
             },
             "Screen Design": {
-              index: 1,
+              meta: {
+                index: 1,
+              },
               on: {
                 next: {
                   target: "Backend Development",
-                  // actions: ['onNext']
                 },
               },
             },
             "Backend Development": {
-              index: 2,
+              meta: {
+                index: 2,
+              },
               on: {
                 next: {
                   target: "Frontend Development",
-                  // actions: ['onNext']
                 },
               },
             },
             "Frontend Development": {
-              index: 3,
+              meta: {
+                index: 3,
+              },
               on: {
                 next: {
                   target: "Production",
-                  // actions: ['onNext']
                 },
               },
             },
             Production: {
-              index: 4,
+              meta: {
+                index: 4,
+              },
               type: "final",
               on: {
                 next: {
                   target: "#generalProcess.Aftermath",
-                  // actions: ['onNext']
                 },
               },
             },
           },
         },
         Print: {
-          index: 1,
+          meta: {
+            index: 1,
+          },
           initial: "Design",
           states: {
             Design: {
-              index: 0,
+              meta: {
+                index: 0,
+              },
               on: {
                 next: {
                   target: "Production",
-                  // actions: ['onNext']
                 },
               },
             },
             Production: {
-              index: 1,
+              meta: {
+                index: 1,
+              },
               type: "final",
             },
           },
         },
         Motion: {
           initial: "Design",
-          index: 2,
+          meta: {
+            index: 2,
+          },
           states: {
             Design: {
-              index: 0,
+              meta: {
+                index: 0,
+              },
               on: {
                 next: {
                   target: "Production",
-                  // actions: ['onNext']
                 },
               },
             },
             Production: {
-              index: 1,
+              meta: {
+                index: 1,
+              },
               type: "final",
             },
           },
@@ -290,38 +330,33 @@ createMachine({
     },
     Aftermath: {
       initial: "Final Billing",
-      index: 6,
+      meta: {
+        index: 6,
+      },
       states: {
         "Final Billing": {
-          index: 0,
+          meta: {
+            index: 0,
+          },
           on: {
             next: {
               target: "Documentation",
-              // actions: ['onNext']
             },
           },
         },
         Documentation: {
-          index: 1,
+          meta: {
+            index: 1,
+          },
           type: "final",
           on: {
             next: {
               target: "#generalProcess.Discovery",
-              // actions: ['onNext']
             },
           },
         },
       },
     },
-    // End: {
-    //   index: 7,
-    //   // type: "final",
-    //   on: {
-    //     next: {
-    //       target: "Discovery",
-    //     },
-    //   },
-    // },
   },
 }, {
   actions,

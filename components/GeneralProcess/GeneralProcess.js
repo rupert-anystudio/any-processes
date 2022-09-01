@@ -1,31 +1,11 @@
 import { useActor } from '@xstate/react'
 import { useContext, useEffect } from 'react'
 import styled from 'styled-components'
+import { getNodesFromMachine } from '../../lib/getNodesFromMachine'
 import { BigButton } from '../BigButton'
 import BranchRenderer from '../BranchRenderer'
 import { FixedToScreen } from '../FixedToScreen'
 import { GeneralProcessContext } from './GeneralProcessContainer'
-
-function addStates(acc, [key, value], parentPath) {
-  const stateEntries = Object.entries(value?.states ?? {})
-  const path = [parentPath, key].filter(Boolean).join('.')
-  const addition = { id: path, order: value?.index, title: key }
-  if (stateEntries.length) {
-    addition.nodes = stateEntries.reduce((acc_, [key_, value_]) => addStates(acc_, [key_, value_], path), [])
-  }
-  acc.push(addition)
-  acc.sort((a, b) => a.order - b.order)
-  return acc
-}
-
-function getNodesFromMachine(machine) {
-  const nodes = Object
-    .entries(machine?.config?.states ?? {})
-    .reduce((acc, keyValue) => addStates(acc, keyValue), [])
-  return nodes
-}
-
-const nextEvent = { type: 'next' }
 
 const Wrap = styled.div`
   width: 100%;
@@ -62,7 +42,7 @@ const Flow = styled.div`
   padding-top: 1vw;
   padding-bottom: 2vw;
   &:not(:last-child) {
-    border-bottom: 1px dotted currentColor;
+    border-bottom: 1px dashed currentColor;
   }
   > strong {
     font-size: 3vw;
@@ -91,9 +71,12 @@ const Step = styled.div`
   }
 `
 
+const nextEvent = { type: 'next' }
+
 export const GeneralProcess = () => {
   const processService = useContext(GeneralProcessContext)
   const [state] = useActor(processService)
+ 
   const nodes = getNodesFromMachine(state?.machine)
 
   const handleNextClick = () => {
